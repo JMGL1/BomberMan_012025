@@ -176,6 +176,12 @@
     <ClCompile Include="..\..\Source\BomberMan_012025\EnemigoTest.h">
       <Filter>Source\BomberMan_012025</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\MovingActor.cpp">
+      <Filter>Source\BomberMan_012025</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BomberMan_012025\MovingActor.h">
+      <Filter>Source\BomberMan_012025</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\PowerUpTest.cpp">
       <Filter>Source\BomberMan_012025</Filter>
     </ClCompile>

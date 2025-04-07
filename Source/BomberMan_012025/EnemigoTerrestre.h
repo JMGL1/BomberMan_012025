@@ -23,15 +23,18 @@ protected:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Componentes")
     UStaticMeshComponent* MallaTerrestre;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento Aéreo")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
     FVector CentroMovimiento;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento Aéreo")
-    FVector DireccionMovimiento;  // Nueva variable para definir la dirección de movimiento
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
+    FVector DireccionMovimiento;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento Aéreo")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
     float VelocidadVuelo;
 
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
+    float DistanciaMaxima; // Distancia máxima antes de regresar
+
 private:
-    float Tiempo;
+    FVector PosicionInicial;
 };

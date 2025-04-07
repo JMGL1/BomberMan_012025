@@ -13,7 +13,6 @@ void EmptyLinkFunctionForGeneratedCodeEnemigoSubterraneo() {}
 BOMBERMAN_012025_API UClass* Z_Construct_UClass_AEnemigo();
 BOMBERMAN_012025_API UClass* Z_Construct_UClass_AEnemigoSubterraneo();
 BOMBERMAN_012025_API UClass* Z_Construct_UClass_AEnemigoSubterraneo_NoRegister();
-COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 UPackage* Z_Construct_UPackage__Script_BomberMan_012025();
 // End Cross Module References
@@ -38,23 +37,28 @@ struct Z_Construct_UClass_AEnemigoSubterraneo_Statics
 		{ "IncludePath", "EnemigoSubterraneo.h" },
 		{ "ModuleRelativePath", "EnemigoSubterraneo.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MallaSubterranea_MetaData[] = {
-		{ "Category", "Componentes" },
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ConoMesh_MetaData[] = {
+		{ "Category", "Visual" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "EnemigoSubterraneo.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DireccionActual_MetaData[] = {
-		{ "Category", "Movimiento Subterr\xef\xbf\xbdneo" },
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Velocidad_MetaData[] = {
+		{ "Category", "Movimiento" },
 		{ "ModuleRelativePath", "EnemigoSubterraneo.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TiempoEntreEmergencias_MetaData[] = {
-		{ "Category", "Emergencia" },
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_AnchoRectangulo_MetaData[] = {
+		{ "Category", "Movimiento" },
+		{ "ModuleRelativePath", "EnemigoSubterraneo.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_AltoRectangulo_MetaData[] = {
+		{ "Category", "Movimiento" },
 		{ "ModuleRelativePath", "EnemigoSubterraneo.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_MallaSubterranea;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_DireccionActual;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_TiempoEntreEmergencias;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ConoMesh;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_Velocidad;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_AnchoRectangulo;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_AltoRectangulo;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -62,13 +66,15 @@ struct Z_Construct_UClass_AEnemigoSubterraneo_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_MallaSubterranea = { "MallaSubterranea", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoSubterraneo, MallaSubterranea), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MallaSubterranea_MetaData), NewProp_MallaSubterranea_MetaData) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_DireccionActual = { "DireccionActual", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoSubterraneo, DireccionActual), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DireccionActual_MetaData), NewProp_DireccionActual_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_TiempoEntreEmergencias = { "TiempoEntreEmergencias", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoSubterraneo, TiempoEntreEmergencias), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TiempoEntreEmergencias_MetaData), NewProp_TiempoEntreEmergencias_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_ConoMesh = { "ConoMesh", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoSubterraneo, ConoMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ConoMesh_MetaData), NewProp_ConoMesh_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_Velocidad = { "Velocidad", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoSubterraneo, Velocidad), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Velocidad_MetaData), NewProp_Velocidad_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_AnchoRectangulo = { "AnchoRectangulo", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoSubterraneo, AnchoRectangulo), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AnchoRectangulo_MetaData), NewProp_AnchoRectangulo_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_AltoRectangulo = { "AltoRectangulo", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoSubterraneo, AltoRectangulo), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AltoRectangulo_MetaData), NewProp_AltoRectangulo_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AEnemigoSubterraneo_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_MallaSubterranea,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_DireccionActual,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_TiempoEntreEmergencias,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_ConoMesh,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_Velocidad,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_AnchoRectangulo,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoSubterraneo_Statics::NewProp_AltoRectangulo,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemigoSubterraneo_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AEnemigoSubterraneo_Statics::DependentSingletons[])() = {
@@ -111,10 +117,10 @@ AEnemigoSubterraneo::~AEnemigoSubterraneo() {}
 struct Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoSubterraneo_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemigoSubterraneo, AEnemigoSubterraneo::StaticClass, TEXT("AEnemigoSubterraneo"), &Z_Registration_Info_UClass_AEnemigoSubterraneo, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemigoSubterraneo), 2888543345U) },
+		{ Z_Construct_UClass_AEnemigoSubterraneo, AEnemigoSubterraneo::StaticClass, TEXT("AEnemigoSubterraneo"), &Z_Registration_Info_UClass_AEnemigoSubterraneo, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemigoSubterraneo), 3420454820U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoSubterraneo_h_2633952956(TEXT("/Script/BomberMan_012025"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoSubterraneo_h_1839375328(TEXT("/Script/BomberMan_012025"),
 	Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoSubterraneo_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoSubterraneo_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

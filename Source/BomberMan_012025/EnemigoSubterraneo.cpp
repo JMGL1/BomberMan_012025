@@ -1,81 +1,52 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "EnemigoSubterraneo.h"
 #include "Components/StaticMeshComponent.h"
+#include "UObject/ConstructorHelpers.h"
 
 AEnemigoSubterraneo::AEnemigoSubterraneo()
 {
-    MallaSubterranea = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MallaSubterranea"));
-    RootComponent = MallaSubterranea;
+    PrimaryActorTick.bCanEverTick = true;
 
-    // Inicializar atributos
-    VelocidadMovimiento = 150.0f;
-    DireccionActual = FVector(1.0f, 0.0f, 0.0f);
-    TiempoEntreEmergencias = 3.5f;
-    TiempoAcumulado = 0.0f;
-    Emergido = false;
+    ConoMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ConoMesh"));
+    ConoMesh->SetupAttachment(RootComponent);
 
-    // Cargar una malla con forma de pirámide
-    static ConstructorHelpers::FObjectFinder<UStaticMesh> ObjetoMalla(TEXT("/Script/Engine.StaticMesh'/Game/StarterContent/Shapes/Shape_Cone.Shape_Cone'"));
-    if (ObjetoMalla.Succeeded())
+    static ConstructorHelpers::FObjectFinder<UStaticMesh> ConoAsset(TEXT("/Engine/BasicShapes/Cone.Cone"));
+    if (ConoAsset.Succeeded())
     {
-        MallaSubterranea->SetStaticMesh(ObjetoMalla.Object);
+        ConoMesh->SetStaticMesh(ConoAsset.Object);
+        ConoMesh->SetRelativeLocation(FVector(0.0f, 0.0f, -100.0f)); // Ajuste visual del cono
     }
+
+    Velocidad = 300.f;
+    AnchoRectangulo = 1000.f;
+    AltoRectangulo = 50.f;
+    PuntoActual = 0;
 }
 
 void AEnemigoSubterraneo::BeginPlay()
 {
     Super::BeginPlay();
 
-    // Colocar al enemigo bajo tierra al inicio
-    FVector PosicionInicial = GetActorLocation();
-    PosicionInicial.Z -= 50.0f; // Por debajo de la superficie
-    SetActorLocation(PosicionInicial);
+    PuntoInicial = GetActorLocation();
+
+    PuntosPatrulla[0] = PuntoInicial + FVector(0, 0, AltoRectangulo);
+    PuntosPatrulla[1] = PuntosPatrulla[0] + FVector(AnchoRectangulo, 0, 0);
+    PuntosPatrulla[2] = PuntosPatrulla[1] - FVector(0, 0, AltoRectangulo);
+    PuntosPatrulla[3] = PuntoInicial;
 }
 
 void AEnemigoSubterraneo::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
 
-    // Contador para alternar emergencias
-    TiempoAcumulado += DeltaTime;
+    FVector Objetivo = PuntosPatrulla[PuntoActual];
+    FVector PosActual = GetActorLocation();
+    FVector Direccion = (Objetivo - PosActual).GetSafeNormal();
+    FVector NuevaPos = PosActual + Direccion * Velocidad * DeltaTime;
 
-    // Si el enemigo no está emergido, se mueve bajo tierra
-    if (!Emergido)
+    SetActorLocation(NuevaPos);
+
+    if (FVector::Dist(NuevaPos, Objetivo) < 10.f)
     {
-        // Mover al enemigo en la dirección actual
-        FVector NuevaPosicion = GetActorLocation() + (DireccionActual * VelocidadMovimiento * DeltaTime);
-        NuevaPosicion.Z = GetActorLocation().Z; // Mantener bajo tierra
-        SetActorLocation(NuevaPosicion);
+        PuntoActual = (PuntoActual + 1) % 4;
     }
-
-    // Alternar entre emerger y esconderse según el tiempo
-    if (TiempoAcumulado >= TiempoEntreEmergencias)
-    {
-        AlternarEmergencia();
-        TiempoAcumulado = 0.0f; // Reinicia el contador
-    }
-}
-
-void AEnemigoSubterraneo::AlternarEmergencia()
-{
-    // Cambiar el estado de emergido
-    Emergido = !Emergido;
-
-    FVector NuevaPosicion = GetActorLocation();
-
-    if (Emergido)
-    {
-        // Emerger: Subir el enemigo a la superficie
-        NuevaPosicion.Z += 80.0f; // Ajustar la altura para emerger
-    }
-    else
-    {
-        // Esconderse: Bajar el enemigo bajo tierra
-        NuevaPosicion.Z -= 80.0f; // Ajustar la altura para esconderse
-    }
-
-    // Actualizar la posición del actor
-    SetActorLocation(NuevaPosicion);
 }

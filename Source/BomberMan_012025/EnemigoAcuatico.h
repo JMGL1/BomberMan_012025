@@ -15,32 +15,27 @@ class BOMBERMAN_012025_API AEnemigoAcuatico : public AEnemigo
 	GENERATED_BODY()
 	
 public:
+    // Constructor
     AEnemigoAcuatico();
 
 protected:
-    // Llamado al inicio del juego
     virtual void BeginPlay() override;
-
-public:
-    // Llamado cada frame
     virtual void Tick(float DeltaTime) override;
 
-private:
-    // Componente de malla para representar al enemigo visualmente
+public:
     UStaticMeshComponent* MallaAcuatica;
 
-    // Atributos de movimiento
-    float VelocidadMovimiento;     // Velocidad horizontal
-    float AmplitudOscilacion;      // Amplitud del movimiento vertical (altura máxima de oscilación)
-    float FrecuenciaOscilacion;    // Velocidad de la oscilación vertical
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
+    float AmplitudOscilacion;
 
-    // Dirección de movimiento
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
+    float FrecuenciaOscilacion;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
     FVector DireccionMovimiento;
 
-    // Altura base del agua
-    float AlturaBaseAgua;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
+    float DistanciaMaxima; // Límite antes de cambiar dirección
 
-    // Límites del movimiento en X e Y
-    FVector LimiteMinimo;
-    FVector LimiteMaximo;
+    FVector PosicionInicial;
 };

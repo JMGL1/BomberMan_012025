@@ -90,21 +90,21 @@ void ABomberMan_012025GameMode::BeginPlay()
 	}
 
 	// Spawn de enemigos terrestres
-	FVector UbicacionTerrestre1 = FVector(860.0f, 3160.0f, 20.0f);
-	FVector UbicacionTerrestre2 = FVector(860.0f, 4800.0f, 20.0f);
+	FVector UbicacionTerrestre1 = FVector(860.0f, 3550.0f, 20.0f);
+	FVector UbicacionTerrestre2 = FVector(860.0f, 5500.0f, 20.0f);
 	SpawnearEnemigoTerrestre(UbicacionTerrestre1);
 	SpawnearEnemigoTerrestre(UbicacionTerrestre2);
 
 	// Spawnear enemigos subterráneos
-	FVector UbicacionSubterranea1 = FVector(860.0f, 2490.0f, 5.0f);
+	FVector UbicacionSubterranea1 = FVector(860.0f, 2290.0f, 5.0f);
 	FVector UbicacionSubterranea2 = FVector(860.0f, 5800.0f, 5.0f);
 	SpawnearEnemigoSubterraneo(UbicacionSubterranea1);
 	SpawnearEnemigoSubterraneo(UbicacionSubterranea2);
 
 	//Spawn de enemigos acuáticos
 	// Spawnear enemigo acuático
-	FVector UbicacionAcuatico1 = FVector(1370.0f, 1850.0f, FMath::RandRange(100.0f, 300.0f));
-	FVector UbicacionAcuatico2 = FVector(840.0f, 6700.0f, FMath::RandRange(100.0f, 300.0f));
+	FVector UbicacionAcuatico1 = FVector(1370.0f, 1950.0f, FMath::RandRange(100.0f, 300.0f));
+	FVector UbicacionAcuatico2 = FVector(840.0f, 6800.0f, FMath::RandRange(100.0f, 300.0f));
 	SpawnearEnemigoAcuatico(UbicacionAcuatico1);
 	SpawnearEnemigoAcuatico(UbicacionAcuatico2);
 
@@ -125,7 +125,7 @@ void ABomberMan_012025GameMode::SpawnSuelo() {
 		Mundo->SpawnActor<ASueloDeAgua>(ASueloDeAgua::StaticClass(), FVector(7960.0f, 5460.0f, -50.0f), FRotator::ZeroRotator);
 	}
 }
-// Función para generar un bloque
+
 void ABomberMan_012025GameMode::SpawnBloque(FVector posicionBloque, int32 tipoBloque)
 {
 	//ABloque* BloqueGenerado = nullptr;
@@ -311,33 +311,6 @@ void ABomberMan_012025GameMode::RestoreSpeed(ACharacter* PlayerCharacter)
 		}
 	}
 }
-/*
-void AMyActor::TestMap()
-{
-	// Crear el TMap
-	TMap<FString, int32> ExampleMap;
-
-	// Agregar elementos
-	ExampleMap.Add("Jugador1", 100);
-	ExampleMap.Add("Jugador2", 200);
-	ExampleMap.Add("Jugador3", 300);
-
-	// Acceder a un valor
-	if (int32* Score = ExampleMap.Find("Jugador2"))
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Puntuación de Jugador2: %d"), *Score);
-	}
-
-	// Eliminar un elemento
-	ExampleMap.Remove("Jugador1");
-
-	// Iterar sobre el TMap
-	for (const TPair<FString, int32>& Pair : ExampleMap)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Clave: %s, Valor: %d"), *Pair.Key, Pair.Value);
-	}
-}
-*/
 
 void ABomberMan_012025GameMode::SpawnEnemigosTest(FVector Ubicacion) {
 	

@@ -1,12 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
+// EnemigoTerrestre.cpp
 #include "EnemigoTerrestre.h"
-
-// Fill out your copyright notice in the Description page of Project Settings.
-
-#include "EnemigoAereo.h"
-#include "Components/StaticMeshComponent.h"
 
 AEnemigoTerrestre::AEnemigoTerrestre()
 {
@@ -21,23 +14,32 @@ AEnemigoTerrestre::AEnemigoTerrestre()
 
     CentroMovimiento = FVector(800.0f, 3500.0f, 120.0f);
     DireccionMovimiento = FVector(1.0f, 0.0f, 0.0f); // Movimiento en línea recta en el eje X
-    VelocidadVuelo = 600.0f; // Velocidad en unidades por segundo
-    Tiempo = 0.0f;
+    VelocidadVuelo = 600.0f;
+    DistanciaMaxima = 2000.0f; // Definir límite antes de regresar
 }
 
 void AEnemigoTerrestre::BeginPlay()
 {
     Super::BeginPlay();
-    SetActorLocation(CentroMovimiento);
+
+    PosicionInicial = GetActorLocation(); // Guardamos la posición inicial
 }
 
 void AEnemigoTerrestre::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
 
-    // Mover en línea recta multiplicando la dirección por la velocidad y el tiempo transcurrido
     FVector NuevaPosicion = GetActorLocation() + (DireccionMovimiento * VelocidadVuelo * DeltaTime);
     SetActorLocation(NuevaPosicion);
 
-    //UE_LOG(LogTemp, Warning, TEXT("Enemigo terrestre moviéndose en línea recta: X=%f, Y=%f, Z=%f"), NuevaPosicion.X, NuevaPosicion.Y, NuevaPosicion.Z);
+    float DistanciaRecorrida = FVector::Dist(NuevaPosicion, PosicionInicial);
+
+    if (DistanciaRecorrida >= DistanciaMaxima)
+    {
+        DireccionMovimiento *= -1; // Invertimos la dirección
+        PosicionInicial = NuevaPosicion; // Actualizamos el punto de referencia
+    }
+
+    UE_LOG(LogTemp, Warning, TEXT("Posicion: X=%f, Y=%f, Z=%f | Direccion: X=%f, Y=%f, Z=%f"),
+        NuevaPosicion.X, NuevaPosicion.Y, NuevaPosicion.Z, DireccionMovimiento.X, DireccionMovimiento.Y, DireccionMovimiento.Z);
 }

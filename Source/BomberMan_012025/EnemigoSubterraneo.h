@@ -15,27 +15,26 @@ class BOMBERMAN_012025_API AEnemigoSubterraneo : public AEnemigo
 	GENERATED_BODY()
 	
 public:
-	AEnemigoSubterraneo();
+    AEnemigoSubterraneo();
+
 protected:
-	virtual void BeginPlay() override;
-	virtual void Tick(float DeltaTime) override;
+    virtual void BeginPlay() override;
+    virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Componentes")
-	UStaticMeshComponent* MallaSubterranea;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Visual")
+    UStaticMeshComponent* ConoMesh;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento Subterráneo")
+    FVector PuntosPatrulla[4];
+    int PuntoActual;
 
-	FVector DireccionActual;
+    UPROPERTY(EditAnywhere, Category = "Movimiento")
+    float Velocidad;
 
+    UPROPERTY(EditAnywhere, Category = "Movimiento")
+    float AnchoRectangulo;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Emergencia")
-	float TiempoEntreEmergencias;
+    UPROPERTY(EditAnywhere, Category = "Movimiento")
+    float AltoRectangulo;
 
-	float TiempoAcumulado;
-	float VelocidadMovimiento;
-	bool Emergido;
-
-	void CambiarDireccionAleatoria();
-	void AlternarEmergencia();
-
+    FVector PuntoInicial;
 };

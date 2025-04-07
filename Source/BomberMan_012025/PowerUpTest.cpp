@@ -22,6 +22,11 @@ APowerUpTest::APowerUpTest()
     {
         MeshComponent->SetStaticMesh(CapsuleMesh.Object);
     }
+    static ConstructorHelpers::FObjectFinder<UMaterial> MaterialBase(TEXT("/Script/Engine.Material'/Game/StarterContent/Materials/M_Tech_Hex_Tile_Pulse.M_Tech_Hex_Tile_Pulse'")); // o "/Engine/BasicShapes/Cube.Cube"
+    if (MaterialBase.Succeeded())
+    {
+        MeshComponent->SetMaterial(0, MaterialBase.Object); // Asignar el material al slot 0
+    }
 }
 
 void APowerUpTest::BeginPlay()

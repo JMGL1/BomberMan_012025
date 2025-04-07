@@ -25,9 +25,13 @@ public:
 	void SpawnearEnemigoTerrestre(FVector UbicacionTerrestre);
 	void SpawnearEnemigoSubterraneo(FVector Ubicacion);
 	void SpawnearEnemigoAcuatico(FVector UbicacionAcuatico);
+	void SpawnEnemigosTest(FVector UbicacionSpawn);
 
+	void SpawnBloque(FVector posicion, int32 tipoBloque);
+	void SpawnSuelo();
+	void DestruirBloque();
 
-
+	void SpawnPowerUp(FVector ubi);
 
 public:
 	// Declarar la posición del siguiente bloque
@@ -109,11 +113,7 @@ public:
 	FTimerHandle tHDestruirBloques;
 
 	//void SpawnBloques();
-	void SpawnBloque(FVector posicion, int32 tipoBloque);
-	void SpawnSuelo();
-	void DestruirBloque();
-
-	void SpawnEnemigosTest(FVector UbicacionSpawn);
+	
 };
 
 /*

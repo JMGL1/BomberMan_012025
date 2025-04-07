@@ -24,6 +24,9 @@
 #include "EnemigoAcuatico.h"
 #include "SueloDeAgua.h"
 #include "EnemigoTest.h"
+#include "PowerUpTest.h"
+#include "Math/UnrealMathUtility.h"
+
 
 ABomberMan_012025GameMode::ABomberMan_012025GameMode()
 {
@@ -105,8 +108,12 @@ void ABomberMan_012025GameMode::BeginPlay()
 	SpawnearEnemigoAcuatico(UbicacionAcuatico1);
 	SpawnearEnemigoAcuatico(UbicacionAcuatico2);
 
-	FVector UbicacionTest = FVector(970.0f, 1110.0f, 100.0f);
+	FVector UbicacionTest = FVector(1080.0f, 2320.0f, 100.0f);
 	SpawnEnemigosTest(UbicacionTest);
+
+	// Spawn de power-ups
+	FVector UbicacionPowerUp = FVector(1080.0f, 2500.0f, 100.0f);
+	SpawnPowerUp(UbicacionPowerUp);
 
 	GetWorld()->GetTimerManager().SetTimer(tHDestruirBloques, this, &ABomberMan_012025GameMode::DestruirBloque, 2.0f, true);
 }
@@ -333,16 +340,36 @@ void AMyActor::TestMap()
 */
 
 void ABomberMan_012025GameMode::SpawnEnemigosTest(FVector Ubicacion) {
-    UWorld* Mundo = GetWorld();
-    if (Mundo) {
-        FActorSpawnParameters ParametrosSpawn;
-        Mundo->SpawnActor<AEnemigoTest>(AEnemigoTest::StaticClass(), Ubicacion, FRotator::ZeroRotator, ParametrosSpawn);
-    }
+	
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+
+		AEnemigoTest* Enemigo = GetWorld()->SpawnActor<AEnemigoTest>(
+			AEnemigoTest::StaticClass(),
+			Ubicacion,
+			FRotator::ZeroRotator,
+			SpawnParams
+		);
+		
+
+	
 }
 
-// Create a new Enemigo
-//ABloque* bloque01 = GetWorld()->SpawnActor<ABloque>(ABloque::StaticClass(), FVector(934.0f, 1370.0f, 100.0f), FRotator(0.0f, 0.0f, 0.0f));
-//ABloque* bloque02 = GetWorld()->SpawnActor<ABloque>(ABloque::StaticClass(), FVector(734.0f, 1370.0f, 50.0f), FRotator(0.0f, 0.0f, 0.0f));
+void ABomberMan_012025GameMode::SpawnPowerUp(FVector ubi)
+{
+	UWorld* Mundo = GetWorld();
+	if (Mundo) {
+		Mundo->SpawnActor<APowerUpTest>(APowerUpTest::StaticClass(), ubi, FRotator::ZeroRotator);
+	}
+}
+
+
+
+
+
+
+
+
 
 //int numeroBloqueConMovimiento = 0;
 

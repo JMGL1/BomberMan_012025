@@ -4,6 +4,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Engine/StaticMesh.h"
+#include "AIController.h"
 
 AEnemigoTest::AEnemigoTest()
 {
@@ -28,6 +29,10 @@ AEnemigoTest::AEnemigoTest()
 
     // Detectar colisiones
     GetCapsuleComponent()->OnComponentHit.AddDynamic(this, &AEnemigoTest::OnCapsuleHit);
+
+    // ?? LÍNEAS CLAVE PARA QUE FUNCIONE CUANDO SE SPAWNEA
+    AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
+    AIControllerClass = AAIController::StaticClass();
 }
 
 void AEnemigoTest::BeginPlay()

@@ -67,33 +67,18 @@ void ABomberMan_012025GameMode::BeginPlay()
 		}
 	}
 
-	//Spawm de enemigos
-	UWorld* Mundo = GetWorld();
-	if (Mundo)
-	{
-		FVector Ubicacion = FVector(0.0f, 0.0f, 300.0f);
-		FRotator Rotacion = FRotator(0.0f, 0.0f, 0.0f);
-		FActorSpawnParameters ParametrosSpawn;
-
-		AEnemigoAereo* Enemigo = Mundo->SpawnActor<AEnemigoAereo>(AEnemigoAereo::StaticClass(), Ubicacion, Rotacion, ParametrosSpawn);
-
-		if (Enemigo)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("¡Enemigo Aéreo spawneado exitosamente en la ubicación: %s!"), *Ubicacion.ToString());
-			//Añadimos el enemigo a la lista de enemigos
-			aEnemigos.Add(Enemigo);
-		}
-		else
-		{
-			UE_LOG(LogTemp, Error, TEXT("Error al spawnear Enemigo Aéreo."));
-		}
-	}
-
+	//SPAWN DE ENEMIGOS
 	// Spawn de enemigos terrestres
 	FVector UbicacionTerrestre1 = FVector(860.0f, 3550.0f, 20.0f);
 	FVector UbicacionTerrestre2 = FVector(860.0f, 5500.0f, 20.0f);
 	SpawnearEnemigoTerrestre(UbicacionTerrestre1);
 	SpawnearEnemigoTerrestre(UbicacionTerrestre2);
+
+	// Spawn de enemigos aéreos
+	FVector UbicacionAerea1 = FVector(860.0f, 3550.0f, 300.0f);
+	FVector UbicacionAerea2 = FVector(860.0f, 5500.0f, 300.0f);
+	SpawnearEnemigoAereo(UbicacionAerea1);
+	SpawnearEnemigoAereo(UbicacionAerea2);
 
 	// Spawnear enemigos subterráneos
 	FVector UbicacionSubterranea1 = FVector(860.0f, 2290.0f, 5.0f);
@@ -102,20 +87,21 @@ void ABomberMan_012025GameMode::BeginPlay()
 	SpawnearEnemigoSubterraneo(UbicacionSubterranea2);
 
 	//Spawn de enemigos acuáticos
-	// Spawnear enemigo acuático
 	FVector UbicacionAcuatico1 = FVector(1370.0f, 1950.0f, FMath::RandRange(100.0f, 300.0f));
 	FVector UbicacionAcuatico2 = FVector(840.0f, 6800.0f, FMath::RandRange(100.0f, 300.0f));
 	SpawnearEnemigoAcuatico(UbicacionAcuatico1);
 	SpawnearEnemigoAcuatico(UbicacionAcuatico2);
 
+	// Spawn de enemigos de prueba
 	FVector UbicacionTest = FVector(1080.0f, 2320.0f, 100.0f);
 	SpawnEnemigosTest(UbicacionTest);
 
 	// Spawn de power-ups
 	FVector UbicacionPowerUp = FVector(1080.0f, 2500.0f, 100.0f);
+	FVector UbicacionPowerUp2 = FVector(1080.0f, 3700.0f, 100.0f);
 	SpawnPowerUp(UbicacionPowerUp);
+	SpawnPowerUp(UbicacionPowerUp2);
 
-	GetWorld()->GetTimerManager().SetTimer(tHDestruirBloques, this, &ABomberMan_012025GameMode::DestruirBloque, 2.0f, true);
 }
 
 void ABomberMan_012025GameMode::SpawnSuelo() {
@@ -231,6 +217,29 @@ void ABomberMan_012025GameMode::SpawnearEnemigoTerrestre(FVector UbicacionTerres
 	}
 }
 
+void ABomberMan_012025GameMode::SpawnearEnemigoAereo(FVector UbicacionAereo) {
+	UWorld* Mundo = GetWorld();
+	if (Mundo)
+	{
+		FVector Ubicacion = FVector(0.0f, 0.0f, 300.0f);
+		FRotator Rotacion = FRotator(0.0f, 0.0f, 0.0f);
+		FActorSpawnParameters ParametrosSpawn;
+
+		AEnemigoAereo* Enemigo = Mundo->SpawnActor<AEnemigoAereo>(AEnemigoAereo::StaticClass(), Ubicacion, Rotacion, ParametrosSpawn);
+
+		if (Enemigo)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("¡Enemigo Aéreo spawneado exitosamente en la ubicación: %s!"), *Ubicacion.ToString());
+			//Añadimos el enemigo a la lista de enemigos
+			aEnemigos.Add(Enemigo);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("Error al spawnear Enemigo Aéreo."));
+		}
+	}
+}
+
 void ABomberMan_012025GameMode::SpawnearEnemigoSubterraneo(FVector Ubicacion) {
 	UWorld* Mundo = GetWorld();
 	if (Mundo)
@@ -272,42 +281,6 @@ void ABomberMan_012025GameMode::SpawnearEnemigoAcuatico(FVector UbicacionAcuatic
 		else
 		{
 			UE_LOG(LogTemp, Error, TEXT("Error al spawnear Enemigo Acuático."));
-		}
-	}
-}
-
-void ABomberMan_012025GameMode::ActivateSpeedBoost(ACharacter* PlayerCharacter, float SpeedBoostAmount)
-{
-	if (PlayerCharacter)
-	{
-		UCharacterMovementComponent* MovementComp = PlayerCharacter->GetCharacterMovement();
-		if (MovementComp)
-		{
-			// Aumentar la velocidad
-			MovementComp->MaxWalkSpeed += SpeedBoostAmount;
-
-			// Iniciar temporizador para restaurar la velocidad
-			GetWorld()->GetTimerManager().SetTimerForNextTick([this, PlayerCharacter, SpeedBoostAmount]()
-				{
-					FTimerHandle TimerHandle;
-					GetWorld()->GetTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, PlayerCharacter, SpeedBoostAmount]()
-						{
-							RestoreSpeed(PlayerCharacter);
-						}), 5.0f, false);
-				});
-		}
-	}
-}
-
-void ABomberMan_012025GameMode::RestoreSpeed(ACharacter* PlayerCharacter)
-{
-	if (PlayerCharacter)
-	{
-		UCharacterMovementComponent* MovementComp = PlayerCharacter->GetCharacterMovement();
-		if (MovementComp)
-		{
-			// Restaurar la velocidad al valor original
-			MovementComp->MaxWalkSpeed -= 1000.0f; // Debe coincidir con el SpeedBoostAmount
 		}
 	}
 }

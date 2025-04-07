@@ -19,16 +19,4 @@ protected:
 
 public:
     virtual void Tick(float DeltaTime) override;
-
-private:
-    UPROPERTY(VisibleAnywhere)
-    class UStaticMeshComponent* CapsulaMesh;
-
-    UPROPERTY(EditAnywhere)
-    float SpeedBoostAmount;
-
-    UFUNCTION()
-    void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
-        UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
-        bool bFromSweep, const FHitResult& SweepResult);
 };

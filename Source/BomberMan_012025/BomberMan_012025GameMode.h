@@ -23,26 +23,22 @@ public:
 
 	//Spawners de enemigos
 	void SpawnearEnemigoTerrestre(FVector UbicacionTerrestre);
+	void SpawnearEnemigoAereo(FVector UbicacionAerea);
 	void SpawnearEnemigoSubterraneo(FVector Ubicacion);
 	void SpawnearEnemigoAcuatico(FVector UbicacionAcuatico);
 	void SpawnEnemigosTest(FVector UbicacionSpawn);
 
+	//Spawn del mapa
 	void SpawnBloque(FVector posicion, int32 tipoBloque);
 	void SpawnSuelo();
+
+
 	void DestruirBloque();
 
+	//Spawn del Power Up
 	void SpawnPowerUp(FVector ubi);
 
 public:
-	// Declarar la posición del siguiente bloque
-	//FVector posicionSiguienteBloque = FVector(1000.0f, 500.0f, 20.0f);
-
-	void RestoreSpeed(ACharacter* PlayerCharacter);
-
-	UFUNCTION()
-	void ActivateSpeedBoost(ACharacter* PlayerCharacter, float SpeedBoostAmount);
-
-
 	// Declarar un mapa de bloques como un array bidimensional
 	TArray<TArray<int32>> aMapaBloques = {
 		{4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4},
@@ -109,32 +105,5 @@ public:
 
 	//Declarar un array de punteros a objetos de tipo enemigo
 	TArray<AEnemigo*> aEnemigos;
-	
-	FTimerHandle tHDestruirBloques;
-
 	//void SpawnBloques();
-	
 };
-
-/*
-for (AActor* bloque : aBloques)
-{
-	if (bloque)
-	{
-		// Haz algo con cada bloque
-		bloque->Destroy(); // Ejemplo: destruir el bloque
-	}
-}*/
-
-/*
-if (aBloques.Num() > 0)
-{
-	AActor* primerBloque = aBloques[0]; // Obtén el primer bloque
-	if (primerBloque)
-	{
-		// Realiza operaciones con el bloque
-		primerBloque->SetActorLocation(FVector(100.0f, 100.0f, 100.0f));
-	}
-}
-*/
-

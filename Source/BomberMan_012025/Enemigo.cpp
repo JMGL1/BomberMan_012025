@@ -37,8 +37,7 @@ void AEnemigo::Tick(float DeltaTime)
 // Called to bind functionality to input
 void AEnemigo::Mover(float DeltaTime)
 {
-	FVector NuevaPosicion = GetActorLocation() + (GetActorForwardVector() * VelocidadMovimiento * DeltaTime);
-	SetActorLocation(NuevaPosicion);
+	//Test
 }
 void AEnemigo::Patrullar()
 {

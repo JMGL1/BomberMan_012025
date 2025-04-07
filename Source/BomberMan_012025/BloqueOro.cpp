@@ -17,21 +17,73 @@ ABloqueOro::ABloqueOro()
         }
     }
     bPuedeMoverse = FMath::RandBool();
+    TiempoEntreMovimientos = 2.0f;
+    VelocidadMovimiento = 200.0f; // Ajusta para hacerlo más lento o rápido
+    TiempoDesdeUltimoMovimiento = 0.0f;
+    bMoviendoAObjetivo = false;
 }
 
 
 
 void ABloqueOro::BeginPlay()
 {
+    Super::BeginPlay();
+
+    PosicionInicial = GetActorLocation();
+    PosicionObjetivo = PosicionInicial;
 }
 
 void ABloqueOro::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
-	if (bPuedeMoverse)
-	{
-        float NuevaPosicionX = PosicionInicial.X + FMath::Sin(GetWorld()->GetTimeSeconds() * 2.0f) * 50.0f;
-        SetActorLocation(FVector(NuevaPosicionX, GetActorLocation().Y, GetActorLocation().Z));
-	}
-    
+
+    TiempoDesdeUltimoMovimiento += DeltaTime;
+
+    if (TiempoDesdeUltimoMovimiento >= TiempoEntreMovimientos)
+    {
+        ElegirNuevaDireccion();
+        TiempoDesdeUltimoMovimiento = 0.0f;
+        bMoviendoAObjetivo = true;
+    }
+
+    if (bMoviendoAObjetivo)
+    {
+        FVector PosActual = GetActorLocation();
+        FVector NuevaPos = FMath::VInterpTo(PosActual, PosicionObjetivo, DeltaTime, 5.0f);
+        SetActorLocation(NuevaPos);
+
+        // Verifica si ya llegó al destino
+        if (FVector::Dist(NuevaPos, PosicionObjetivo) < 1.0f)
+        {
+            // Si está en destino, vuelve al inicio
+            if (PosicionObjetivo != PosicionInicial)
+            {
+                PosicionObjetivo = PosicionInicial;
+            }
+            else
+            {
+                bMoviendoAObjetivo = false;
+            }
+        }
+    }
+}
+
+void ABloqueOro::ElegirNuevaDireccion()
+{
+    int Direccion = FMath::RandRange(0, 5);
+    FVector Offset(0.0f);
+
+    const float DistanciaMovimiento = 200.0f;
+
+    switch (Direccion)
+    {
+    case 0: Offset.X += DistanciaMovimiento; break; // Derecha
+    case 1: Offset.X -= DistanciaMovimiento; break; // Izquierda
+    case 2: Offset.Y += DistanciaMovimiento; break; // Adelante
+    case 3: Offset.Y -= DistanciaMovimiento; break; // Atrás
+    case 4: Offset.Z += DistanciaMovimiento; break; // Arriba
+    case 5: Offset.Z -= DistanciaMovimiento; break; // Abajo
+    }
+
+    PosicionObjetivo = PosicionInicial + Offset;
 }

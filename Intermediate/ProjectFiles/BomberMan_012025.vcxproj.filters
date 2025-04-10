@@ -122,18 +122,6 @@
     <ClCompile Include="..\..\Source\BomberMan_012025\BomberMan_012025GameMode.h">
       <Filter>Source\BomberMan_012025</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BomberMan_012025\Capsula.cpp">
-      <Filter>Source\BomberMan_012025</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\BomberMan_012025\Capsula.h">
-      <Filter>Source\BomberMan_012025</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\BomberMan_012025\CapsulaEnergia.cpp">
-      <Filter>Source\BomberMan_012025</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\BomberMan_012025\CapsulaEnergia.h">
-      <Filter>Source\BomberMan_012025</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\Enemigo.cpp">
       <Filter>Source\BomberMan_012025</Filter>
     </ClCompile>
@@ -150,12 +138,6 @@
       <Filter>Source\BomberMan_012025</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\EnemigoAereo.h">
-      <Filter>Source\BomberMan_012025</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\BomberMan_012025\EnemigoAnimal.cpp">
-      <Filter>Source\BomberMan_012025</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\BomberMan_012025\EnemigoAnimal.h">
       <Filter>Source\BomberMan_012025</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\EnemigoSubterraneo.cpp">
@@ -176,10 +158,10 @@
     <ClCompile Include="..\..\Source\BomberMan_012025\EnemigoTest.h">
       <Filter>Source\BomberMan_012025</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BomberMan_012025\MovingActor.cpp">
+    <ClCompile Include="..\..\Source\BomberMan_012025\GestorDeEnemigos.cpp">
       <Filter>Source\BomberMan_012025</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\BomberMan_012025\MovingActor.h">
+    <ClCompile Include="..\..\Source\BomberMan_012025\GestorDeEnemigos.h">
       <Filter>Source\BomberMan_012025</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BomberMan_012025\PowerUpTest.cpp">

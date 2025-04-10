@@ -43,10 +43,6 @@ struct Z_Construct_UClass_AEnemigoTerrestre_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "EnemigoTerrestre.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CentroMovimiento_MetaData[] = {
-		{ "Category", "Movimiento" },
-		{ "ModuleRelativePath", "EnemigoTerrestre.h" },
-	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DireccionMovimiento_MetaData[] = {
 		{ "Category", "Movimiento" },
 		{ "ModuleRelativePath", "EnemigoTerrestre.h" },
@@ -61,7 +57,6 @@ struct Z_Construct_UClass_AEnemigoTerrestre_Statics
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MallaTerrestre;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_CentroMovimiento;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_DireccionMovimiento;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_VelocidadVuelo;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_DistanciaMaxima;
@@ -73,13 +68,11 @@ struct Z_Construct_UClass_AEnemigoTerrestre_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemigoTerrestre_Statics::NewProp_MallaTerrestre = { "MallaTerrestre", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoTerrestre, MallaTerrestre), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MallaTerrestre_MetaData), NewProp_MallaTerrestre_MetaData) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AEnemigoTerrestre_Statics::NewProp_CentroMovimiento = { "CentroMovimiento", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoTerrestre, CentroMovimiento), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CentroMovimiento_MetaData), NewProp_CentroMovimiento_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AEnemigoTerrestre_Statics::NewProp_DireccionMovimiento = { "DireccionMovimiento", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoTerrestre, DireccionMovimiento), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DireccionMovimiento_MetaData), NewProp_DireccionMovimiento_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemigoTerrestre_Statics::NewProp_VelocidadVuelo = { "VelocidadVuelo", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoTerrestre, VelocidadVuelo), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_VelocidadVuelo_MetaData), NewProp_VelocidadVuelo_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemigoTerrestre_Statics::NewProp_DistanciaMaxima = { "DistanciaMaxima", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigoTerrestre, DistanciaMaxima), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DistanciaMaxima_MetaData), NewProp_DistanciaMaxima_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AEnemigoTerrestre_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoTerrestre_Statics::NewProp_MallaTerrestre,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoTerrestre_Statics::NewProp_CentroMovimiento,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoTerrestre_Statics::NewProp_DireccionMovimiento,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoTerrestre_Statics::NewProp_VelocidadVuelo,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigoTerrestre_Statics::NewProp_DistanciaMaxima,
@@ -125,10 +118,10 @@ AEnemigoTerrestre::~AEnemigoTerrestre() {}
 struct Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoTerrestre_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemigoTerrestre, AEnemigoTerrestre::StaticClass, TEXT("AEnemigoTerrestre"), &Z_Registration_Info_UClass_AEnemigoTerrestre, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemigoTerrestre), 3922434172U) },
+		{ Z_Construct_UClass_AEnemigoTerrestre, AEnemigoTerrestre::StaticClass, TEXT("AEnemigoTerrestre"), &Z_Registration_Info_UClass_AEnemigoTerrestre, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemigoTerrestre), 226536867U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoTerrestre_h_522154551(TEXT("/Script/BomberMan_012025"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoTerrestre_h_2001517779(TEXT("/Script/BomberMan_012025"),
 	Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoTerrestre_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoTerrestre_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

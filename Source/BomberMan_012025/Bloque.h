@@ -30,8 +30,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	float FloatSpeed;
-	float RotationSpeed;
 	bool bPuedeMoverse;
 	FVector TamanoBloque;
 };

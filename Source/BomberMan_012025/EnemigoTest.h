@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Enemigo.h"
 #include "EnemigoTest.generated.h"
-
 UCLASS()
-class BOMBERMAN_012025_API AEnemigoTest : public ACharacter
+class BOMBERMAN_012025_API AEnemigoTest : public AEnemigo
 {
 	GENERATED_BODY()
 

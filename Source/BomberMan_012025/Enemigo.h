@@ -17,13 +17,9 @@ AEnemigo();
 protected:
 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
 float VelocidadMovimiento;
-UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Patrullaje")
-float RadioPatrullaje;
-UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Comportamiento")
-bool bPatrullajeHabilitado;
+
 virtual void BeginPlay() override;
-virtual void Mover(float DeltaTime);
-virtual void Patrullar();
+
 
 public:
 virtual void Tick(float DeltaTime) override;

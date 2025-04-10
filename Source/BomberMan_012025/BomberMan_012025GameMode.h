@@ -32,11 +32,11 @@ public:
 	void SpawnBloque(FVector posicion, int32 tipoBloque);
 	void SpawnSuelo();
 
-
-	void DestruirBloque();
-
 	//Spawn del Power Up
 	void SpawnPowerUp(FVector ubi);
+
+	//Destruir Bloques:
+	void DestruirBloque();
 
 public:
 	// Declarar un mapa de bloques como un array bidimensional
@@ -98,7 +98,7 @@ public:
 	float YInicial = 500.00f;
 	float AnchoBloque = 200.0f;
 	float LargoBloque = 200.0f;
-	ABloque* BloqueActual = nullptr;
+	AEnemigo* EnemigoActual = nullptr;
 
 	// Declarar un array de punteros a objetos de tipo BloqueMadera
 	TArray<ABloque*> aBloques;
@@ -106,4 +106,15 @@ public:
 	//Declarar un array de punteros a objetos de tipo enemigo
 	TArray<AEnemigo*> aEnemigos;
 	//void SpawnBloques();
+private:
+	FTimerHandle tHDestruirBloques;
+	void ComenzarEliminacion();
+	void EliminarEnemigo();
+
+	TArray<AActor*> EnemigosParaEliminar;
+
+	FTimerHandle TimerEliminar;
+	int32 MaxEliminar = 0;
+	int32 EnemigosEliminados = 0;
+
 };

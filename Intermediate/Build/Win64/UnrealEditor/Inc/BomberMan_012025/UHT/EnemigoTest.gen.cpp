@@ -11,11 +11,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeEnemigoTest() {}
 
 // Begin Cross Module References
+BOMBERMAN_012025_API UClass* Z_Construct_UClass_AEnemigo();
 BOMBERMAN_012025_API UClass* Z_Construct_UClass_AEnemigoTest();
 BOMBERMAN_012025_API UClass* Z_Construct_UClass_AEnemigoTest_NoRegister();
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
-ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
@@ -139,7 +139,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AEnemigoT
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemigoTest_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AEnemigoTest_Statics::DependentSingletons[])() = {
-	(UObject* (*)())Z_Construct_UClass_ACharacter,
+	(UObject* (*)())Z_Construct_UClass_AEnemigo,
 	(UObject* (*)())Z_Construct_UPackage__Script_BomberMan_012025,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemigoTest_Statics::DependentSingletons) < 16);
@@ -178,10 +178,10 @@ AEnemigoTest::~AEnemigoTest() {}
 struct Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoTest_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemigoTest, AEnemigoTest::StaticClass, TEXT("AEnemigoTest"), &Z_Registration_Info_UClass_AEnemigoTest, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemigoTest), 2406152583U) },
+		{ Z_Construct_UClass_AEnemigoTest, AEnemigoTest::StaticClass, TEXT("AEnemigoTest"), &Z_Registration_Info_UClass_AEnemigoTest, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemigoTest), 2258365175U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoTest_h_2514045434(TEXT("/Script/BomberMan_012025"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoTest_h_4099004513(TEXT("/Script/BomberMan_012025"),
 	Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoTest_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_EnemigoTest_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -26,11 +26,12 @@ void ABloqueMadera::BeginPlay()
 
 void ABloqueMadera::Tick(float DeltaTime)
 {
-   Super::Tick(DeltaTime);
+    Super::Tick(DeltaTime);
 
-   if (bPuedeMoverse)
-   {
-       float NuevaAltura = PosicionInicial.Z + FMath::Sin(GetWorld()->GetTimeSeconds() * 2.0f) * 50.0f;
-       SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y, NuevaAltura));
-   }
+    if (bPuedeMoverse)
+    {
+        //float NuevaAltura = PosicionInicial.Z + FMath::Sin(GetWorld()->GetTimeSeconds() * 2.0f) * 50.0f;
+        float NuevaPosX = PosicionInicial.X + FMath::Sin(GetWorld()->GetTimeSeconds() * 2.0f) * 50.0f; // Movimiento en X
+        SetActorLocation(FVector(NuevaPosX, GetActorLocation().Y, GetActorLocation().Z));
+    }
 }

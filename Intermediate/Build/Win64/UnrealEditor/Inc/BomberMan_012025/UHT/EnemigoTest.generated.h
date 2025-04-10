@@ -26,7 +26,7 @@ private: \
 	static void StaticRegisterNativesAEnemigoTest(); \
 	friend struct Z_Construct_UClass_AEnemigoTest_Statics; \
 public: \
-	DECLARE_CLASS(AEnemigoTest, ACharacter, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/BomberMan_012025"), NO_API) \
+	DECLARE_CLASS(AEnemigoTest, AEnemigo, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/BomberMan_012025"), NO_API) \
 	DECLARE_SERIALIZER(AEnemigoTest)
 
 

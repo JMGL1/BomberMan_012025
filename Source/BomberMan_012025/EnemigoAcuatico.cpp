@@ -50,7 +50,7 @@ void AEnemigoAcuatico::Tick(float DeltaTime)
         DireccionMovimiento.X, DireccionMovimiento.Y, DireccionMovimiento.Z,
         DistanciaRecorrida);
 
-    // Cambiar dirección si se alcanza la distancia máxima
+    // Se queda quieto si se alcanza la distancia máxima
     if (DistanciaRecorrida >= DistanciaMaxima)
     {
         UE_LOG(LogTemp, Warning, TEXT("Cambiando dirección del enemigo"));

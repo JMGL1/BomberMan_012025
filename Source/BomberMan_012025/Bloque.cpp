@@ -23,9 +23,6 @@ ABloque::ABloque()
 		MallaBloque->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
 	}
 
-	FloatSpeed = 5.0f;
-	RotationSpeed = 3.0f;
-
 	bPuedeMoverse = FMath::RandBool();
 
 	// Tamaño del bloque (se puede modificar desde el editor o código)

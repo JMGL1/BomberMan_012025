@@ -18,7 +18,7 @@ AEnemigoSubterraneo::AEnemigoSubterraneo()
 
     Velocidad = 300.f;
     AnchoRectangulo = 1000.f;
-    AltoRectangulo = 50.f;
+    AltoRectangulo = 500.f;
     PuntoActual = 0;
 }
 

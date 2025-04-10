@@ -24,9 +24,6 @@ protected:
     UStaticMeshComponent* MallaTerrestre;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
-    FVector CentroMovimiento;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")
     FVector DireccionMovimiento;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movimiento")

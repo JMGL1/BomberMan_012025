@@ -37,19 +37,8 @@ struct Z_Construct_UClass_AEnemigo_Statics
 		{ "Category", "Movimiento" },
 		{ "ModuleRelativePath", "Enemigo.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RadioPatrullaje_MetaData[] = {
-		{ "Category", "Patrullaje" },
-		{ "ModuleRelativePath", "Enemigo.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bPatrullajeHabilitado_MetaData[] = {
-		{ "Category", "Comportamiento" },
-		{ "ModuleRelativePath", "Enemigo.h" },
-	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_VelocidadMovimiento;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_RadioPatrullaje;
-	static void NewProp_bPatrullajeHabilitado_SetBit(void* Obj);
-	static const UECodeGen_Private::FBoolPropertyParams NewProp_bPatrullajeHabilitado;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -58,16 +47,8 @@ struct Z_Construct_UClass_AEnemigo_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemigo_Statics::NewProp_VelocidadMovimiento = { "VelocidadMovimiento", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigo, VelocidadMovimiento), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_VelocidadMovimiento_MetaData), NewProp_VelocidadMovimiento_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemigo_Statics::NewProp_RadioPatrullaje = { "RadioPatrullaje", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemigo, RadioPatrullaje), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RadioPatrullaje_MetaData), NewProp_RadioPatrullaje_MetaData) };
-void Z_Construct_UClass_AEnemigo_Statics::NewProp_bPatrullajeHabilitado_SetBit(void* Obj)
-{
-	((AEnemigo*)Obj)->bPatrullajeHabilitado = 1;
-}
-const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AEnemigo_Statics::NewProp_bPatrullajeHabilitado = { "bPatrullajeHabilitado", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AEnemigo), &Z_Construct_UClass_AEnemigo_Statics::NewProp_bPatrullajeHabilitado_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bPatrullajeHabilitado_MetaData), NewProp_bPatrullajeHabilitado_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AEnemigo_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigo_Statics::NewProp_VelocidadMovimiento,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigo_Statics::NewProp_RadioPatrullaje,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemigo_Statics::NewProp_bPatrullajeHabilitado,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemigo_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AEnemigo_Statics::DependentSingletons[])() = {
@@ -110,10 +91,10 @@ AEnemigo::~AEnemigo() {}
 struct Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_Enemigo_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemigo, AEnemigo::StaticClass, TEXT("AEnemigo"), &Z_Registration_Info_UClass_AEnemigo, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemigo), 2607796452U) },
+		{ Z_Construct_UClass_AEnemigo, AEnemigo::StaticClass, TEXT("AEnemigo"), &Z_Registration_Info_UClass_AEnemigo, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemigo), 1091880157U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_Enemigo_h_2120713014(TEXT("/Script/BomberMan_012025"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_Enemigo_h_4252449796(TEXT("/Script/BomberMan_012025"),
 	Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_Enemigo_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Magne_Documents_Unreal_Projects_BomberMan_012025_Source_BomberMan_012025_Enemigo_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

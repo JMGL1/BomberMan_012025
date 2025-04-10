@@ -2,10 +2,6 @@
 
 
 #include "BloqueLadrillo.h"
-//#include "Components/StaticMeshComponent.h"
-//#include "Materials/MaterialInstanceDynamic.h"
-//#include "Engine/Texture2D.h"
-
 
 ABloqueLadrillo::ABloqueLadrillo()
 {

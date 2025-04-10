@@ -153,7 +153,7 @@ void ABomberMan_012025Character::RevisarSuperficieBajoLosPies()
 
 	FHitResult Hit;
 	FCollisionQueryParams Params;
-	Params.AddIgnoredActor(this);
+	Params.AddIgnoredActor(this); // Ignorar el propio personaje
 
 	if (GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, Params))
 	{

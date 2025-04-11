@@ -108,13 +108,17 @@ public:
 	//void SpawnBloques();
 private:
 	FTimerHandle tHDestruirBloques;
-	void ComenzarEliminacion();
+	int EnemigosEliminados = 0;
+
 	void EliminarEnemigo();
 
-	TArray<AActor*> EnemigosParaEliminar;
+	void IniciarEliminacionEnemigos();
 
-	FTimerHandle TimerEliminar;
-	int32 MaxEliminar = 0;
-	int32 EnemigosEliminados = 0;
+	void EliminarEnemigosTemporalmente();
+
+	// Declara un temporizador y un número objetivo de enemigos
+	FTimerHandle TimerHandle_EliminarEnemigos;
+	int ObjetivoEnemigos = 5;
+
 
 };

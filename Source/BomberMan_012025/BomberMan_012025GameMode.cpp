@@ -128,8 +128,12 @@ void ABomberMan_012025GameMode::BeginPlay()
 	SpawnPowerUp(UbicacionPowerUp);
 	SpawnPowerUp(UbicacionPowerUp2);
 
+
+	EnemigosEliminados = 0;
     UE_LOG(LogTemp, Warning, TEXT("%d"), aEnemigos.Num());
-	GetWorld()->GetTimerManager().SetTimer(tHDestruirBloques, this, &ABomberMan_012025GameMode::EliminarEnemigo, 3.0f, true);
+
+	IniciarEliminacionEnemigos();
+	//GetWorld()->GetTimerManager().SetTimer(tHDestruirBloques, this, &ABomberMan_012025GameMode::EliminarEnemigo, 3.0f, true);
 }
 
 void ABomberMan_012025GameMode::SpawnSuelo() {
@@ -314,95 +318,56 @@ void ABomberMan_012025GameMode::SpawnPowerUp(FVector ubi)
 	}
 }
 
-void ABomberMan_012025GameMode::ComenzarEliminacion()
+void ABomberMan_012025GameMode::EliminarEnemigo()
 {
-	// Obtener todos los enemigos en el mundo que son instancias de AEnemigo o sus clases hijas
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEnemigo::StaticClass(), EnemigosParaEliminar);
-
-	int32 Total = EnemigosParaEliminar.Num();
-	MaxEliminar = Total / 2;
-
-	// Si hay enemigos para eliminar, iniciar la eliminación uno por uno cada 3 segundos
-	if (MaxEliminar > 0)
+	if (aEnemigos.Num() == 0 || EnemigosEliminados >= 5)
 	{
-		GetWorldTimerManager().SetTimer(TimerEliminar, this, &ABomberMan_012025GameMode::EliminarEnemigo, 3.0f, true);
+		// Detener el timer si ya eliminaste 5 enemigos o si no quedan más
+		GetWorld()->GetTimerManager().ClearTimer(tHDestruirBloques);
+		return;
+	}
+
+	int NumeroAleatorio = FMath::RandRange(0, aEnemigos.Num() - 1);
+	EnemigoActual = aEnemigos[NumeroAleatorio];
+
+	if (EnemigoActual)
+	{
+		EnemigoActual->Destroy();
+		aEnemigos.RemoveAt(NumeroAleatorio); // Muy importante removerlo del array
+		EnemigosEliminados++;
 	}
 }
 
-void ABomberMan_012025GameMode::EliminarEnemigo()
+void ABomberMan_012025GameMode::IniciarEliminacionEnemigos()
 {
-	//Seleccionar aleatoriamente un bloque del array ABloques para su eliminacion
-	int numeroBloques = aEnemigos.Num();
-	int NumeroAleatorio = FMath::RandRange(0, numeroBloques-1);
+	// Inicia un temporizador que llama a EliminarEnemigo cada 3 segundos
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle_EliminarEnemigos, this, &ABomberMan_012025GameMode::EliminarEnemigosTemporalmente, 3.0f, true);
+}
 
-	if (aEnemigos.Num() > 5)
+void ABomberMan_012025GameMode::EliminarEnemigosTemporalmente()
+{
+	// Revisa si ya se ha alcanzado el número objetivo de enemigos
+	if (aEnemigos.Num() <= ObjetivoEnemigos)
 	{
-		EnemigoActual = aEnemigos[NumeroAleatorio]; // Obtén el primer bloque
+		// Detén el temporizador si el número de enemigos es igual al objetivo
+		GetWorld()->GetTimerManager().ClearTimer(TimerHandle_EliminarEnemigos);
+		return;
+	}
+
+	// Llama a la lógica original para eliminar un enemigo
+	int numeroBloques = aEnemigos.Num();
+	int NumeroAleatorio = FMath::RandRange(0, numeroBloques - 1);
+
+	if (aEnemigos.IsValidIndex(NumeroAleatorio))
+	{
+		EnemigoActual = aEnemigos[NumeroAleatorio];
 		if (EnemigoActual)
 		{
 			EnemigoActual->Destroy();
-			// Realiza operaciones con el bloque
-			//primerBloque->SetActorLocation(FVector(100.0f, 100.0f, 100.0f));
+			aEnemigos.RemoveAt(NumeroAleatorio); // Asegúrate de eliminar al enemigo del array
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-//int numeroBloqueConMovimiento = 0;
-
-/*
-for (int i = 0; i < 20; i++)
-{
-
-	ABloque* bloque = GetWorld()->SpawnActor<ABloque>(ABloque::StaticClass(), FVector(500.0f + i * 100 , 2500.0f - i * 100, 20.0f), FRotator(0.0f, 0.0f, 0.0f));
-		
-	
-	if (bloque->bPuedeMoverse)
-	{
-		numeroBloqueConMovimiento++;
-	}
-
-	if (numeroBloqueConMovimiento >= 6)
-	{
-		bloque->bPuedeMoverse = false;
-	}
-
-}
-*/
-//SpawnBloques();
-
-
-/*
-void ABomberMan_012025GameMode::SpawnBloques()
-{
-	// recorrer el array de bloques y hacer spawn de cada uno
-	for (int i = 0; i < 6; i++)
-	{
-		for(int j = 0; j < 8; j++)
-		{
-			if (aMapaBloques[i][j] == 1)
-			{
-				FVector PosicionBloque = FVector()
-				ABloqueLadrillo* BloqueLadrillo = GetWorld()->SpawnActor<ABloqueLadrillo>(ABloqueLadrillo::StaticClass(), FVector(posicionSiguienteBloque.X + j * AnchoBloque, posicionSiguienteBloque.Y - i * LargoBloque, posicionSiguienteBloque.Z), FRotator(0.0f, 0.0f, 0.0f));
-		*/		/*if (BloqueLadrillo)
-				{
-					aBloques.Add(static_cast<ABloque*>(BloqueLadrillo));
-				}*/
-	/*		}
-		}
-		//ABloque* bloque = GetWorld()->SpawnActor<ABloque>(ABloque::StaticClass(), FVector(500.0f + i * 100, 2500.0f - i * 100, 20.0f), FRotator(0.0f, 0.0f, 0.0f));
-	}
-}
-*/
-
-
 
 /*void ABomberMan_012025GameMode::DestruirBloque()
 {
